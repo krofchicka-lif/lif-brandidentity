@@ -1,0 +1,90 @@
+/* LIF Brand Kit — fonts, tokens, texture utilities */
+
+@font-face{font-family:'Romana BT';src:url('fonts/RomanaBT-Roman.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Romana BT';src:url('fonts/RomanaBT-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Apercu';src:url('fonts/Apercu-Light.otf') format('opentype');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Apercu';src:url('fonts/Apercu-Regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Apercu';src:url('fonts/Apercu-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
+
+:root{
+  /* core */
+  --lif-air:#FDFCF8;
+  --lif-not-black:#2F2B2B;
+  --lif-warm-sol:#F3A43A;
+  --lif-poppy:#CA0000;
+  --lif-white:#FFFFFF;
+
+  /* texture base pigments */
+  --lif-texture-red:#EE3339;
+  --lif-texture-yellow:#FFB610;
+  --lif-texture-blue:#0071A5;
+
+  /* ink on ground */
+  --lif-rule:rgba(47,43,43,.16);
+  --lif-hairline:rgba(47,43,43,.12);
+  --lif-quiet:rgba(47,43,43,.6);
+  --lif-faint:rgba(47,43,43,.45);
+
+  /* type */
+  --lif-display:'Romana BT',Georgia,serif;
+  --lif-sans:'Apercu',Arial,Helvetica,sans-serif;
+  --lif-tracking-label:.18em;
+  --lif-tracking-action:.14em;
+}
+
+/* ---- textured headline word ----------------------------------------
+   Parent heading needs line-height 1.5 or the backing clips the line above. */
+.lif-hl{
+  display:inline;
+  color:var(--lif-white);
+  text-transform:uppercase;
+  padding:.30em .18em .32em;
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+  white-space:nowrap;
+  background-position:center;
+  background-size:cover;
+}
+.lif-hl--red{background-image:url('textures/lif-texture-red-word.jpg')}
+.lif-hl--blue{background-image:url('textures/lif-texture-blue-word.jpg')}
+.lif-hl--yellow{background-image:url('textures/lif-texture-yellow-word.jpg');color:var(--lif-not-black)}
+
+/* ---- full textured statement surfaces ---- */
+.lif-surface{
+  padding:64px 40px;
+  background-position:center;
+  background-size:cover;
+}
+.lif-surface--red{background-color:var(--lif-texture-red);background-image:url('textures/lif-texture-red.jpg');color:var(--lif-white)}
+.lif-surface--blue{background-color:var(--lif-texture-blue);background-image:url('textures/lif-texture-blue.jpg');color:var(--lif-white)}
+.lif-surface--yellow{background-color:var(--lif-texture-yellow);background-image:url('textures/lif-texture-yellow.jpg');color:var(--lif-not-black)}
+.lif-surface--paper{background-color:var(--lif-air);background-image:url('textures/lif-texture-paper.jpg');color:var(--lif-not-black)}
+
+/* Legibility escape hatch: dim the TEXTURE, never the text. */
+.lif-surface--soften{background-blend-mode:normal;background-color:var(--lif-texture-red)}
+.lif-surface--soften.lif-surface--red{background-image:linear-gradient(rgba(238,51,57,.1),rgba(238,51,57,.1)),url('textures/lif-texture-red.jpg')}
+.lif-surface--soften.lif-surface--blue{background-color:var(--lif-texture-blue);background-image:linear-gradient(rgba(0,113,165,.1),rgba(0,113,165,.1)),url('textures/lif-texture-blue.jpg')}
+.lif-surface--soften.lif-surface--yellow{background-color:var(--lif-texture-yellow);background-image:linear-gradient(rgba(255,182,16,.1),rgba(255,182,16,.1)),url('textures/lif-texture-yellow.jpg')}
+
+/* ---- type roles ---- */
+.lif-heading{font:400 42px/1.02 var(--lif-display);letter-spacing:-.01em;text-wrap:balance;margin:0}
+.lif-display{font:400 76px/0.98 var(--lif-display);letter-spacing:-.02em;text-wrap:balance;margin:0}
+.lif-display--hl{font:400 76px/1.5 var(--lif-display);letter-spacing:-.01em;text-wrap:balance;margin:0}
+.lif-lede{font:300 18px/1.55 var(--lif-sans);color:var(--lif-quiet);margin:0}
+.lif-body{font:400 16px/1.5 var(--lif-sans);margin:0}
+.lif-label{font:700 11px/1 var(--lif-sans);letter-spacing:var(--lif-tracking-label);text-transform:uppercase}
+.lif-action{font:700 13px/1 var(--lif-sans);letter-spacing:var(--lif-tracking-action);text-transform:uppercase}
+
+/* ---- actions ---- */
+.lif-btn{display:inline-block;padding:18px 26px;border-radius:4px;border:0;cursor:pointer;
+  font:700 13px/1 var(--lif-sans);letter-spacing:var(--lif-tracking-action);text-transform:uppercase}
+.lif-btn--sol{background:var(--lif-warm-sol);color:var(--lif-not-black)}
+.lif-btn--poppy{background:var(--lif-poppy);color:var(--lif-air)}
+
+/* ---- lockup ---- */
+.lif-lockup{display:flex;align-items:center;gap:7px}
+.lif-lockup img:first-child{width:30px;height:30px;object-fit:contain}
+.lif-lockup img:last-child{height:21px;width:auto;object-fit:contain}
+
+a{color:var(--lif-not-black);text-decoration:none;border-bottom:1px solid rgba(47,43,43,.35)}
+a:hover{border-bottom-color:var(--lif-not-black)}
